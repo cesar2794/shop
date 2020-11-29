@@ -14,3 +14,5 @@ Route::post('/admin/products', 'ProductController@store'); // Registrar datos de
 
 Route::get('/admin/products/{id}/edit', 'ProductController@edit'); // Formulario Edición
 Route::post('/admin/products/{id}/edit', 'ProductController@update'); // Actualizar
+
+Route::delete('/admin/products/{id}', 'ProductController@destroy'); // Formulario Eliminar

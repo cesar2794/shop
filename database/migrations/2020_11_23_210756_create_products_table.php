@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }
