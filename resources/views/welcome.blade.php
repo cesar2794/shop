@@ -4,20 +4,46 @@
 
 @section('body-class', 'landing-page')
 
+@section('styles')
+    <style>
+        .team .row .col-md-4{
+            margin-bottom: 5em;
+        }
+        .section{
+            padding: 50px 0;
+        }
+        .row{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .row > [class*='col-']{
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 992px){
+            .main-raised .container {
+                margin-top: 45px;
+            }
+        }
+    </style>
+@endsection
+
 @section('content')
 
 <div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
     <div class="container">
-        <div class="row">
             <div class="col-md-6">
                 <h1 class="title">Bienvenido a BioFoods</h1>
                 <h4>Realiza tus pedidos en linea y el producto estará en tus manos en lo que menos te lo esperas.</h4>
                 <br />
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-danger btn-raised btn-lg">
+                <a href="https://www.youtube.com/watch?v=fZMRc-UyPm0" class="btn btn-danger btn-raised btn-lg" target="_blank">
                     <i class="fa fa-play"></i> ¿Cómo funciona?
                 </a>
             </div>
-        </div>
     </div>
 </div>
 
@@ -73,16 +99,20 @@
                     <div class="col-md-4">
                         <div class="team-player">
                             <img src="{{ $product->featured_image_url }}" class="img-raised img-circle">
-                            <h4 class="title">{{$product->name}} <br />
-                                <small class="text-muted">{{$product->category->name}}</small>
+                            <h4 class="title">
+                                <a href="{{ url('/products/'.$product->id) }}">{{ $product->name }}</a> 
+                                <br>
+                                <small class="text-muted">
+                                    {{ $product->category->name }}
+                                </small>
                             </h4>
                             <p class="description">{{$product->description}}</p>
-                            <a href="#pablo" class="btn btn-simple btn-just-icon"><i class="fa fa-twitter"></i></a>
-                            <a href="#pablo" class="btn btn-simple btn-just-icon"><i class="fa fa-instagram"></i></a>
-                            <a href="#pablo" class="btn btn-simple btn-just-icon btn-default"><i class="fa fa-facebook-square"></i></a>
                         </div>
                     </div>
                     @endforeach
+                </div>
+                <div class="text-center">
+                    {{ $products->links() }}
                 </div>
             </div>
 
