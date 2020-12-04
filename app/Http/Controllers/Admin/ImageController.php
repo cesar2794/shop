@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use File;
 
 use App\Product;
 use App\ProductImage;
-use File;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 
 
 class ImageController extends Controller
@@ -23,13 +24,23 @@ class ImageController extends Controller
     public function store(Request $request, $id)
     {
         // Guardar la img en nuestro proyecto
-        $file = $request->file('photo');
-        $path = public_path() . '/images/products';
-        $filename = uniqid() . $file->getClientOriginalName();
-        $moved = $file->move($path, $filename);
+
+        /* 
+            --COMENTARIOS
+            $file = $request->file('photo');
+            $path = public_path() . '/images/products';
+            $filename = uniqid() . $file->getClientOriginalName();
+        */
+        
+        $filename = uniqid() . $request->file('photo')->getClientOriginalName();
+        // $moved = $file->move($path, $filename);
+        
+        $file = Image::make($request->file('photo'))
+                ->resize(250, 250)
+                ->save('images/products/' . $filename);
 
         // Crear 1 registro en la tabla product_image
-        if ($moved) {
+        if ($file) {
             $productImage = new ProductImage();
             $productImage->image = $filename;
             // $productImage->featured = false;
