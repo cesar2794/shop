@@ -22,6 +22,7 @@
         .row > [class*='col-']{
             display: flex;
             flex-direction: column;
+            margin: auto;
         }
 
         @media (min-width: 992px){
@@ -59,7 +60,7 @@
 
             <div class="features">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                         <div class="info">
                             <div class="icon icon-primary">
                                 <i class="material-icons">chat</i>
@@ -68,7 +69,7 @@
                             <p>Atendemos rápidamente cualquier consulta que tengas vía chat. No estás solo, sino que siempre estamos atentos a tus inquietudes.</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                         <div class="info">
                             <div class="icon icon-success">
                                 <i class="material-icons">verified_user</i>
@@ -77,7 +78,7 @@
                             <p>Todo pedido que realices será confirmado a través de una llamada. Si no confías en los pagos en línea puedes pagar contra entrega el valor acordado.</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                         <div class="info">
                             <div class="icon icon-danger">
                                 <i class="material-icons">fingerprint</i>
@@ -85,7 +86,7 @@
                             <h4 class="info-title">Información Privada</h4>
                             <p>Los pedidos que realices sólo los conocerás tú a través de tu panel de usuario. Nadie más tiene acceso a esta información.</p>
                         </div>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         </div>

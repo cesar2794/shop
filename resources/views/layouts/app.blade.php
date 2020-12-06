@@ -48,7 +48,10 @@
 								{{ Auth::user()->name }} <span class="caret"></span>
 							</a>
 
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<a href="{{ url('/home') }}">Mi Carrito</a>
+								</li>
 								@if(auth()->user()->admin)
 									<li>
 										<a href="{{ url('/admin/products') }}">Gestionar Productos</a>
