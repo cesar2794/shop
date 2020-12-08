@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 
 use App\Product;
@@ -11,13 +12,14 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Product::orderBy('id', 'desc')->paginate(10);
         return view('admin.products.index')->with(compact('products')); //listado de productos
     }
 
     public function create()
     {
-        return view('admin.products.create'); //Formulario de registro
+        $categories = Category::orderBy('name')->get();
+        return view('admin.products.create')->with(compact('categories')); //Formulario de registro
     }
 
     public function store(Request $request)
@@ -48,6 +50,7 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->long_description = $request->input('long_description');
+        $product->category_id = $request->category_id;
         $product->save(); // INSERT
 
         return redirect('/admin/products');
@@ -55,9 +58,10 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        $categories = Category::orderBy('name')->get();
         // return "Mostrar aqui el form de edicion para el producto de id $id";
         $product = Product::find($id);
-        return view('admin.products.edit')->with(compact('product')); //Formulario de registro
+        return view('admin.products.edit')->with(compact('product', 'categories')); //Formulario de registro
     }
 
     public function update(Request $request, $id)
@@ -85,6 +89,7 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->long_description = $request->input('long_description');
+        $product->category_id = $request->category_id;
         $product->save(); // UPDATE
 
         return redirect('/admin/products');
