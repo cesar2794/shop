@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bienvenido a BioFoods')
+@section('title', 'Bienvenido a ' . config('app.name'))
 
 @section('body-class', 'landing-page')
 
@@ -77,7 +77,7 @@
 <div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
     <div class="container">
             <div class="col-md-6">
-                <h1 class="title">Bienvenido a BioFoods</h1>
+                <h1 class="title">Bienvenido a {{ config('app.name')}}</h1>
                 <h4>Realiza tus pedidos en linea y el producto estará en tus manos en lo que menos te lo esperas.</h4>
                 <br />
                 <a href="https://www.youtube.com/watch?v=fZMRc-UyPm0" class="btn btn-danger btn-raised btn-lg" target="_blank">

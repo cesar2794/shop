@@ -48,7 +48,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="text-center">#</th>
+                        <th class="text-center">Producto</th>
                         <th class="text-center">Nombre</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
@@ -92,6 +92,8 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <p><strong>Importe a pagar: </strong> S/.{{ auth()->user()->cart->total }}</p>
 
             <div class="text-center">
                 <form method="post" action="{{ url('/order') }}">

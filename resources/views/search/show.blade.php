@@ -34,7 +34,7 @@
                     </div>
                     <div class="description text-center">
                         <p>
-                            Se encontraron {{ $products->count() }} resultados para el término {{ $query }}.
+                            Se encontraron <b>{{ $products->count() }}</b> resultados para el término <b>{{ $query }}</b>.
                         </p>
                     </div>
                     

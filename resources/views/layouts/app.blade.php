@@ -6,7 +6,7 @@
 	<link rel="icon" type="image/png" href="{{asset('/img/favicon.png')}}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>@yield('title', 'BioFoods Shop')</title>
+	<title>@yield('title', config('app.name'))</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -34,7 +34,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
         		</button>
-				<a class="navbar-brand" href="{{ url('/') }}">BioFoods</a>
+				<a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
