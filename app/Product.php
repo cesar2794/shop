@@ -32,7 +32,7 @@ class Product extends Model
         }
         
         // Default
-        return '/images/products/default.png';
+        return '/images/default.png';
     }
 
     public function getCategoryNameAttribute()

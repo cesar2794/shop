@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
+use File;
 
 class CategoryController extends Controller
 {
@@ -24,7 +27,22 @@ class CategoryController extends Controller
         $this->validate($request, Category::$rules, Category::$messages);
 
         // Registrar en la bd
-        Category::create($request->all()); //mass assignment - carga masiva   
+        $category = Category::create($request->only('name', 'description'));
+
+        if ($request->hasFile('image')) {
+            $filename = time() . ' - ' . $request->file('image')->getClientOriginalName();
+        
+            $file = Image::make($request->file('image'))
+                ->resize(250, 250)
+                ->save('images/categories/' . $filename);
+            
+            // Actualizar Categoría
+            if ($file) {
+                $category->image = $filename;
+                $category->save(); //UPDATE
+            }
+        }
+
 
         return redirect('/admin/categories');
     }
@@ -38,7 +56,29 @@ class CategoryController extends Controller
     {
         $this->validate($request, Category::$rules, Category::$messages);
 
-        $category->update($request->all());
+        $category->update($request->only('name', 'description'));
+
+        if ($request->hasFile('image')) {
+            $path = public_path().'/images/categories';
+            $filename = time() . ' - ' . $request->file('image')->getClientOriginalName();
+        
+            $file = Image::make($request->file('image'))
+                ->resize(250, 250)
+                ->save('images/categories/' . $filename);
+            
+            // Actualizar Categoría
+            if ($file) {
+                $previousPath = $path . '/' . $category->image;
+
+                $category->image = $filename;
+                $saved = $category->save(); //UPDATE
+
+                if ($saved) {
+                    File::delete($previousPath);
+                }
+                
+            }
+        }
 
         return redirect('/admin/categories');
     }
