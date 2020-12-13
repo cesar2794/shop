@@ -16,13 +16,19 @@ class UsersTableSeeder extends Seeder
             'name' => 'cesar',
             'email' => 'correo@correo.com',
             'password' => bcrypt('12345678'),
-            'admin' => true
+            'admin' => true,
+            'phone' => '987654321',
+            'address' => 'Av Central 458',
+            'username' => 'cesar27'
         ]);
 
         User::create([
             'name' => 'augusto',
             'email' => 'correo2@correo.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
+            'phone' => '987951321',
+            'address' => 'Av Central 450',
+            'username' => 'cesar2727'
         ]);
     }
 }
