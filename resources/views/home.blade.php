@@ -13,7 +13,7 @@
     <div class="container">
 
         <div class="section">
-            <h2 class="title text-center text-uppercase">Dashboard</h2>
+            <h2 class="title text-center text-uppercase">PANEL DE COMPRAS</h2>
 
             @if (session('notification'))
                 <div class="alert alert-success">
