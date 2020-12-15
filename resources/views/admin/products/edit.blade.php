@@ -56,7 +56,7 @@
                         <div class="form-group label-floating">
                             <label class="control-label">Categoría del Producto</label>
                             <select class="form-control" name="category_id">
-                                <option value="">General</option>
+                                <option value="" disabled>Seleccione una Categoría</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" @if($category->id == old('category_id', $product->category_id)) selected @endif>{{ $category->name }}</option>
                                 @endforeach
