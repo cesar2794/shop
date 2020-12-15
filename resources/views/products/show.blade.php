@@ -34,10 +34,16 @@
             </div>
 
             <div class="text-center">
-                @if(auth()->check())
+                @if(auth()->check() && !auth()->user()->cart->existeProducto($product->id))
                     <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddToCart">
                         <i class="material-icons">add_shopping_cart</i> Añadir al carrito de compras
                     </button>
+                @elseif(auth()->check() && auth()->user()->cart->existeProducto($product->id))
+                    <hr>
+                    <p class="help-block" style="color: #4653a0;"><b>El producto ya está en su carrito de compras</b></p>
+                    <a href="{{ url('/home') }}" class="btn btn-primary btn-round">
+                        <i class="material-icons">arrow_forward</i> Ir al Carrito
+                    </a>
                 @else
                     <a href="{{ url('/login?redirect_to='.url()->current()) }}" class="btn btn-primary btn-round">
                         <i class="material-icons">add_shopping_cart</i> Añadir al carrito de compras

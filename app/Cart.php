@@ -20,4 +20,10 @@ class Cart extends Model
         }
         return $total;
     }
+
+    public function existeProducto($id){
+        $productAlreadyExists = $this->details()->where('product_id', $id)->exists();
+
+        return $productAlreadyExists;
+    }
 }

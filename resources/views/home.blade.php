@@ -67,7 +67,7 @@
                         </td>
                         <td>S/. {{ $detail->product->price }}</td>
 
-                        <td>{{ $detail->quantity }}</td>
+                        <td class="text-center">{{ $detail->quantity }}</td>
                         <td>S/. {{ $detail->quantity * $detail->product->price }}</td>
 
                         <td class="td-actions">
